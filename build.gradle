@@ -1,0 +1,62 @@
+plugins {
+    id ("checkstyle")
+    id ("application")
+    id ("org.openjfx.javafxplugin").version("0.0.12")
+    id ("org.beryx.jlink").version("2.24.4")
+}
+
+group 'de.hhn.seb.kprog'
+version '1.0-SNAPSHOT'
+
+
+wrapper {
+    gradleVersion = '7.4'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
+}
+
+// This is the hint of https://stackoverflow.com/questions/52569724/javafx-11-create-a-jar-file-with-gradle
+// and https://bitbucket.org/FlPe/javafx_jlink_example/src/master/
+// and https://docs.gradle.org/current/javadoc/org/gradle/api/jvm/ModularitySpec.html#getInferModulePath--
+java { modularity.inferModulePath = true }
+// This is a kind of workaround, see https://github.com/java9-modularity/gradle-modules-plugin/issues/165
+modularity.disableEffectiveArgumentsAdjustment()
+
+application {
+    mainModule = "kprog.main"
+    mainClassName = "environment.testprograms.HelloWorldWithJavaFx"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// use slf versions with module-info information inside
+    implementation ("org.slf4j:slf4j-api:2.0.0-beta1") {
+      because "we need the SimpleLoggingFacade with module information"
+}
+    implementation ("org.slf4j:slf4j-simple:2.0.0-beta1")
+    // https://mvnrepository.com/artifact/junit/junit
+    testImplementation group: 'junit', name: 'junit', version: '4.13'
+    // https://mvnrepository.com/artifact/org.testfx/testfx-core
+    testImplementation group: 'org.testfx', name: 'testfx-core', version: '4.0.16-alpha'
+    // https://mvnrepository.com/artifact/org.testfx/testfx-junit
+    testImplementation group: 'org.testfx', name: 'testfx-junit', version: '4.0.15-alpha'
+}
+
+checkstyle {
+    toolVersion = "8.41.1"
+    configFile = file('etc/google-checks-2021.xml')
+    showViolations = false
+    checkstyleTest.enabled = false
+}
