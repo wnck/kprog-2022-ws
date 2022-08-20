@@ -24,16 +24,10 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
 }
 
-// This is the hint of https://stackoverflow.com/questions/52569724/javafx-11-create-a-jar-file-with-gradle
-// and https://bitbucket.org/FlPe/javafx_jlink_example/src/master/
-// and https://docs.gradle.org/current/javadoc/org/gradle/api/jvm/ModularitySpec.html#getInferModulePath--
-java { modularity.inferModulePath = true }
-// This is a kind of workaround, see https://github.com/java9-modularity/gradle-modules-plugin/issues/165
-modularity.disableEffectiveArgumentsAdjustment()
 
 application {
     mainModule = "kprog.main"
-    mainClassName = "environment.testprograms.HelloWorldWithJavaFx"
+    mainClassName = "environment.testprograms." + (findProperty('mainClass') ?: 'HelloWorldWithJavaFx')
 }
 
 repositories {
