@@ -6,9 +6,9 @@ package prog.ex02.exercise.printer;
 public class Document {
 
   // Number of pages the document consists of.
-  private int pages;
+  private final int pages;
   // Flag signaling if the document uses color.
-  private boolean color;
+  private final boolean color;
   // Number of copies already printed from this document.
   private int numberOfCopies;
 
