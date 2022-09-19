@@ -54,3 +54,5 @@ checkstyle {
     showViolations = false
     checkstyleTest.enabled = false
 }
+
+checkstyleMain.exclude('examples/ch14/*', 'examples/executorservice/*')
