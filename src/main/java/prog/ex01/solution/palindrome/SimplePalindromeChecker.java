@@ -12,6 +12,7 @@ public class SimplePalindromeChecker implements PalindromeChecker {
     return false;
   }
 
+  @Override
   public char[] normalizeLine(String line) {
     return null;
   }
