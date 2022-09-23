@@ -1,6 +1,7 @@
 plugins {
     id ("checkstyle")
     id ("application")
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
     id ("org.openjfx.javafxplugin").version("0.0.12")
     id ("org.beryx.jlink").version("2.24.4")
 }
@@ -56,3 +57,20 @@ checkstyle {
 }
 
 checkstyleMain.exclude('examples/ch14/*', 'examples/executorservice/*')
+
+ext {
+    if (!project.hasProperty('exid')) {
+        exid = 'ex06'
+    }
+}
+
+
+// generic task to zip
+// call it, e.g. for ex11, with "gradle -Pexid=ex11 zipEx"
+task zipEx(type: Zip){
+    archiveFileName = exid + "Solution.zip"
+    destinationDirectory = file ("${rootDir}/zipfiles")
+    from  fileTree('src/main/java/prog/'+ exid)
+    into('prog/' + exid)
+}
+
