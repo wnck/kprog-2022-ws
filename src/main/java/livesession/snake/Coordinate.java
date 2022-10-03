@@ -18,4 +18,19 @@ public class Coordinate {
   public int getColumn() {
     return column;
   }
+
+  public Coordinate getNeighbor(Direction direction) {
+    switch (direction) {
+      case EAST:
+        return new Coordinate(row, column + 1);
+      case WEST:
+        return new Coordinate(row, column - 1);
+      case NORTH:
+        return new Coordinate(row - 1, column);
+      case SOUTH:
+        return new Coordinate(row + 1, column);
+      default:
+        throw new IllegalArgumentException("Unknown direction: " + direction);
+    }
+  }
 }
