@@ -4,5 +4,6 @@ public interface SnakeListener {
   void updateBoard(Board board);
   void newGameState(GameState state);
   void gameEnded(String reason);
+  void updateScore(int score);
 
 }
