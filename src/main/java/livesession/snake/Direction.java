@@ -25,4 +25,5 @@ public enum Direction {
     return right;
   }
 
+  // TODO: equals and hashcode
   }
