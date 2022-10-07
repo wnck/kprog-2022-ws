@@ -33,4 +33,6 @@ public class Coordinate {
         throw new IllegalArgumentException("Unknown direction: " + direction);
     }
   }
+
+  // TODO: equals and hashcode
 }
