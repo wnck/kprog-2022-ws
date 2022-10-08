@@ -9,14 +9,22 @@ import livesession.snake.Snake;
 public class SimpleSnake implements Snake {
   private static final org.slf4j.Logger logger =
       org.slf4j.LoggerFactory.getLogger(SimpleSnake.class);
-
-  private SimpleSnakeService service;
-
-  LinkedList<Coordinate> position;
+  private final InternalBoard board;
+  private final SimpleSnakeService service;
+  private final LinkedList<Coordinate> position;
+  private Direction direction;
 
   public SimpleSnake(final SimpleSnakeService service) {
     this.service = service;
+    board = service.getInternalBoard();
     position = new LinkedList<>();
+    position.addFirst(board.getStartPosition());
+    direction = Direction.EAST;
+  }
+
+  public Coordinate advance() throws IllegalPositionException {
+    // TODO: advance the snake
+    return null;
   }
 
   @Override
@@ -27,10 +35,15 @@ public class SimpleSnake implements Snake {
 
   @Override
   public Direction getDirection() {
-    return null;
+    return direction;
   }
 
-  void advance() throws IllegalPositionException {
-    // TODO: advance the snake
+  public void goLeft() {
+    direction = direction.getLeft();
   }
+
+  public void goRight() {
+    direction = direction.getRight();
+  }
+
 }
