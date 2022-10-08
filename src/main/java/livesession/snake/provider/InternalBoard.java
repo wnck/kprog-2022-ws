@@ -7,6 +7,8 @@ public class InternalBoard extends BaseBoard {
   private static final org.slf4j.Logger logger =
       org.slf4j.LoggerFactory.getLogger(InternalBoard.class);
 
+  private int score;
+
   public InternalBoard(final int size) {
     super(size);
 
@@ -27,4 +29,7 @@ public class InternalBoard extends BaseBoard {
     board[coordinate.getRow()][coordinate.getColumn()] = BoardState.GRASS;
   }
 
+  public void increaseScore() {
+    score += 10;
+  }
 }
