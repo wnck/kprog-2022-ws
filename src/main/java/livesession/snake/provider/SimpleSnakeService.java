@@ -1,12 +1,16 @@
 package livesession.snake.provider;
 
+import livesession.snake.Board;
+import livesession.snake.BoardState;
+import livesession.snake.Coordinate;
 import livesession.snake.GameConfiguration;
 import livesession.snake.IllegalConfigurationException;
+import livesession.snake.Reason;
 import livesession.snake.Snake;
 import livesession.snake.SnakeListener;
 import livesession.snake.SnakeService;
 
-public class SimpleSnakeService implements SnakeService {
+public class SimpleSnakeService implements ExtendedSnakeService {
   private static final org.slf4j.Logger logger =
       org.slf4j.LoggerFactory.getLogger(SimpleSnakeService.class);
 
@@ -71,23 +75,45 @@ public class SimpleSnakeService implements SnakeService {
     try {
       advanceSnake();
     } catch (IllegalPositionException e) {
-      failed(e.getMessage());
+      failed(new Reason(e.getCoordinate(), e.getState()));
     }
   }
 
-  void advanceSnake() throws IllegalPositionException {
+  @Override
+  public Board getExternalBoard() {
+    return null;
+  }
+
+  @Override
+  public void failed(final Reason reason) {
+
+  }
+
+  public void advanceSnake() throws IllegalPositionException {
     snake.advance();
   }
+
+  @Override
+  public void addFood(final Coordinate coordinate) {
+
+  }
+
   @Override
   public Snake getSnake() {
     return null;
   }
 
-  void failed(String reason) {
+  public InternalBoard getInternalBoard() {
+    return null;
+  }
+
+  @Override
+  public void foodEaten(Coordinate coordinate) {
 
   }
 
-  InternalBoard getInternalBoard() {
-    return null;
+  @Override
+  public void updateScore(final BoardState state) {
+
   }
 }
