@@ -12,7 +12,7 @@ public interface SnakeService {
   void start();
 
   /**
-   * Aborts the game. The new game state is ABORDED.
+   * Aborts the game. The new game state is ABORTED.
    */
   void abort();
 
