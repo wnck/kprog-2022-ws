@@ -29,6 +29,12 @@ public class SimpleSnakeService implements ExtendedSnakeService {
 
   /**
    * Default constructor. The game uses then default values for configuration.
+   * The default values are
+   * <li>
+   *   <ul>Size of 20</ul>
+   *   <ul>velocity of 500 ms</ul>
+   *   <ul>Number of food is 1</ul>
+   * </li>
    */
   public SimpleSnakeService() {
     // TODO: What to initialize?
