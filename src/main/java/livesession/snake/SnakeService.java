@@ -65,6 +65,12 @@ public interface SnakeService {
   void configure(GameConfiguration configuration) throws IllegalConfigurationException;
 
   /**
+   * Returns the actual configuration.
+   * @return actual GameConfiguration
+   */
+  GameConfiguration getConfiguration();
+
+  /**
    * Returns the snake.
    *
    * @return snake
