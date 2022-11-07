@@ -12,5 +12,6 @@ module kprog.main{
     exports examples.javafx.modal;
     exports examples.javafx.mvvm;
     exports examples.javafx.observable;
+    exports examples.io;
     exports prog.javafx.main;
     }
