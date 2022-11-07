@@ -3,8 +3,8 @@ module kprog.main{
   requires org.slf4j;
   requires javafx.controls;
   requires javafx.fxml;
-  requires org.testfx.junit;
-  requires org.testfx;
+  //requires org.testfx.junit;
+  //requires org.testfx;
   exports environment.testprograms;
   exports examples.javafx.bidirectional;
   exports examples.javafx.firststeps;
