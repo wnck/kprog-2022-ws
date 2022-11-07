@@ -19,7 +19,9 @@ tasks.withType(JavaCompile) {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
-
+test {
+    jvmArgs =["--add-exports","javafx.graphics/com.sun.javafx.application=org.testfx"]
+}
 javafx {
     version = "17.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
@@ -44,9 +46,9 @@ dependencies {
     // https://mvnrepository.com/artifact/junit/junit
     testImplementation group: 'junit', name: 'junit', version: '4.13'
     // https://mvnrepository.com/artifact/org.testfx/testfx-core
-    testImplementation group: 'org.testfx', name: 'testfx-core', version: '4.0.16-alpha'
+    implementation group: 'org.testfx', name: 'testfx-core', version: '4.0.16-alpha'
     // https://mvnrepository.com/artifact/org.testfx/testfx-junit
-    testImplementation group: 'org.testfx', name: 'testfx-junit', version: '4.0.15-alpha'
+    implementation group: 'org.testfx', name: 'testfx-junit', version: '4.0.15-alpha'
 }
 
 checkstyle {
