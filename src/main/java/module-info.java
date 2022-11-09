@@ -1,10 +1,8 @@
-module kprog.main{
+module kprog.main {
   requires java.desktop;
   requires org.slf4j;
   requires javafx.controls;
   requires javafx.fxml;
-  //requires org.testfx.junit;
-  //requires org.testfx;
   exports environment.testprograms;
   exports examples.javafx.bidirectional;
   exports examples.javafx.firststeps;
@@ -14,6 +12,6 @@ module kprog.main{
   exports examples.javafx.modal;
   exports examples.javafx.mvvm;
   exports examples.javafx.observable;
- // exports examples.io;
+  exports examples.io;
   exports prog.javafx.main;
 }
