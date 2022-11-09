@@ -1,4 +1,4 @@
-package prog.javafx4palindrome;
+package prog.ex07.javafx4palindrome;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
