@@ -1,4 +1,4 @@
-package examples.ch14.newsfeedv1g;
+package examples.ch14.addressbookv1g;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
