@@ -1,6 +1,9 @@
 package examples.javafx.addressbook;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -12,6 +15,8 @@ public class AddressBookFxGui extends TabPane {
   private static final org.slf4j.Logger logger =
       org.slf4j.LoggerFactory.getLogger(AddressBookFxGui.class);
   private final AddressBook book;
+  private TextField searchInput;
+  private ObservableList<ContactDetails> contactDetailsObservableList;
 
   public AddressBookFxGui(final AddressBook book) {
     this.book = book;
@@ -28,10 +33,21 @@ public class AddressBookFxGui extends TabPane {
     VBox searchBox = new VBox();
     HBox searchLine = new HBox();
     searchLine.getChildren().add(new Label("Search"));
-    TextField searchInput = new TextField();
+    searchInput = new TextField();
+    searchInput.textProperty().addListener((e) -> updateSearch());
     searchLine.getChildren().add(searchInput);
     searchBox.getChildren().add(searchLine);
     searchTab.setContent(searchBox);
+    contactDetailsObservableList = FXCollections.observableArrayList();
+    ListView<ContactDetails> contactListView = new ListView<ContactDetails>();
+    contactListView.setItems(contactDetailsObservableList);
+    searchBox.getChildren().add(contactListView);
+  }
+
+  void updateSearch() {
+    ContactDetails[] result = book.search(searchInput.getText());
+    contactDetailsObservableList.clear();
+    contactDetailsObservableList.addAll(result);
   }
 
 
