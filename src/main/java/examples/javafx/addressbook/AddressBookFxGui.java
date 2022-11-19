@@ -2,10 +2,12 @@ package examples.javafx.addressbook;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -17,6 +19,9 @@ public class AddressBookFxGui extends TabPane {
   private final AddressBook book;
   private TextField searchInput;
   private ObservableList<ContactDetails> contactDetailsObservableList;
+  private TextField nameTextField;
+  private TextField phoneTextField;
+  private TextArea addressTextArea;
 
   public AddressBookFxGui(final AddressBook book) {
     this.book = book;
@@ -26,6 +31,7 @@ public class AddressBookFxGui extends TabPane {
     getTabs().add(searchTab);
     addSearch(searchTab);
     getTabs().add(newEntryTab);
+    addNewEntry(newEntryTab);
     getTabs().add(listTab);
   }
 
@@ -49,6 +55,40 @@ public class AddressBookFxGui extends TabPane {
     contactDetailsObservableList.clear();
     contactDetailsObservableList.addAll(result);
   }
+private void addNewEntry(final Tab newEntryTab) {
+  VBox addEntryBox = new VBox();
+  addEntryBox.getChildren().add(new Label("Name"));
+  nameTextField = new TextField();
+  addEntryBox.getChildren().add(nameTextField);
+  addEntryBox.getChildren().add(new Label("Phone"));
+  phoneTextField = new TextField();
+  addEntryBox.getChildren().add(phoneTextField);
+  addEntryBox.getChildren().add(new Label("Address"));
+  addressTextArea = new TextArea();
+  addEntryBox.getChildren().add(addressTextArea);
+  Button addButton = new Button("Add");
+  addButton.setOnAction((e) -> addEntryToBook());
+  Button clearButton = new Button("Clear");
+  clearButton.setOnAction((e) -> clearEntryForm());
+  HBox buttonBox = new HBox();
+  buttonBox.getChildren().addAll(addButton, clearButton);
+  addEntryBox.getChildren().add(buttonBox);
+  newEntryTab.setContent(addEntryBox);
+}
 
+  private void clearEntryForm() {
+    nameTextField.textProperty().setValue("");
+    phoneTextField.textProperty().setValue("");
+    addressTextArea.textProperty().setValue("");
+  }
+
+  private void addEntryToBook() {
+    ContactDetails contactDetails = new ContactDetails(
+        nameTextField.getText(),
+        phoneTextField.getText(),
+        addressTextArea.getText()
+        );
+    book.addDetails(contactDetails);
+  }
 
 }
