@@ -84,6 +84,7 @@ public class AddressBookFxGui extends TabPane {
         addressTextArea.getText()
     );
     book.addDetails(contactDetails);
+    clearEntryForm();
   }
 
   private void clearEntryForm() {
@@ -107,6 +108,4 @@ public class AddressBookFxGui extends TabPane {
     listBox.getChildren().add(buttonBox);
     listTab.setContent(listBox);
   }
-
-
 }

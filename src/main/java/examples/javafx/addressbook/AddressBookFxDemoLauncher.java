@@ -7,9 +7,9 @@ import javafx.stage.Stage;
 /**
  * Demonstrates the AddressBook with a graphical user interface.
  */
-public class AddressBookDemoLauncher extends Application {
+public class AddressBookFxDemoLauncher extends Application {
   private static final org.slf4j.Logger logger =
-      org.slf4j.LoggerFactory.getLogger(AddressBookDemoLauncher.class);
+      org.slf4j.LoggerFactory.getLogger(AddressBookFxDemoLauncher.class);
 
   @Override
   public void start(final Stage primaryStage) throws Exception {
