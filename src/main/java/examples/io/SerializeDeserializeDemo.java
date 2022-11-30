@@ -7,6 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/**
+ * Demonstrates Web of Object approach of Serialization.
+ */
 public class SerializeDeserializeDemo {
   private static final org.slf4j.Logger logger =
       org.slf4j.LoggerFactory.getLogger(SerializeDeserializeDemo.class);
@@ -15,6 +18,12 @@ public class SerializeDeserializeDemo {
   public SerializeDeserializeDemo() throws IOException {
   }
 
+  /**
+   * main.
+   *
+   * @param args no args expected.
+   * @throws IOException if anything with the file handling goes wrong.
+   */
   public static void main(String[] args) throws IOException {
 
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
@@ -34,8 +43,7 @@ public class SerializeDeserializeDemo {
       out.writeObject(secondA);
     }
 
-    try (ObjectInputStream in =
-             new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
       ClassA againFirstA = (ClassA) in.readObject();
       ClassA againSecondA = (ClassA) in.readObject();
 

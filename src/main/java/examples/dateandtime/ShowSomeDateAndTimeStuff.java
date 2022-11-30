@@ -31,7 +31,8 @@ public class ShowSomeDateAndTimeStuff {
 
 
     Locale.setDefault(Locale.GERMANY);
-    DateTimeFormatter fullFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.SHORT);
+    DateTimeFormatter fullFormatter = DateTimeFormatter
+        .ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.SHORT);
     System.out.println("Full FormatStyle with Germany-Locale: " + fullFormatter.format(xmas));
 
     Locale.setDefault(Locale.UK);
