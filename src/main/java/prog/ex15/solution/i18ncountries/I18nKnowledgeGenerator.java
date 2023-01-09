@@ -1,4 +1,4 @@
-package prog.ex15.solution.i18countries;
+package prog.ex15.solution.i18ncountries;
 
 import prog.ex15.exercise.i18ncountries.CountryKnowledgeContainer;
 import prog.ex15.exercise.i18ncountries.KnowledgeGenerator;
